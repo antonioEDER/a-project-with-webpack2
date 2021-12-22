@@ -5,7 +5,14 @@ Configurando projeto com webpack 2
 ```
 Esse é um projeto foi desenvolvido com webpack 2.
 
-Nele vamos explorar ainda o Babel + CSS CSS Loaders + Code Splinting + Tree Shaking + Dead Code + Performance Tuning.
+Nele vamos explorar ainda:
+- Express
+- Babel
+- CSS CSS Loaders
+- Code Splinting
+- Tree Shaking
+- Dead Code
+- Performance Tuning.
 
 ```
 
