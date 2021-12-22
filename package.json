@@ -1,0 +1,45 @@
+{
+  "name": "configuring-project-with-webpack2",
+  "version": "1.0.0",
+  "description": "A simple bunch of examples used as an overview about ES6 (ECMAScript 2015)",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "lint": "eslint",
+    "build": "NODE_ENV=development webpack",
+    "build:prod": "webpack",
+    "nodemon": "nodemon",
+    "serve": "webpack-dev-server",
+    "express": "NODE_ENV=development PORT=8080 node server.js",
+    "express:prod": "yarn build:prod && PORT=8081 node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Especializa/es6.git"
+  },
+  "keywords": [
+    "ES6",
+    "ECMASscript2015",
+    "ES2015",
+    "ES6 modules",
+    "Webpack",
+    "Webpack 2"
+  ],
+  "author": "Jose Berardo Cunha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Especializa/es6/issues"
+  },
+  "homepage": "https://github.com/Especializa/es6#readme",
+  "devDependencies": {
+    "eslint": "^3.14.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "express": "^4.14.1",
+    "http-server": "^0.9.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-dev-server": "^2.3.0"
+  }
+}
