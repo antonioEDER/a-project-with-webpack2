@@ -15,6 +15,13 @@ Nele vamos explorar ainda:
 - Performance Tuning.
 
 ```
+Para o projeto foi criado os arquivos:
+- index.html
+- server.js (Servidor em nodejs para subir nosso projeto)
+- webpack.config.js (Onde fica as configurações do webpack para geração do bundle)
+- Diretorio app com exemplo de modulos.
+- Diretorio dist com as aquivos do build do webpak
+- package.json (Onde fica as dependecias do projeto e os scripts para o webpack)
 
 <h2 align="center">Install</h2>
 
