@@ -60,10 +60,10 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "dist/";
+/******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -100,18 +100,71 @@ module.exports = Message;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+
+    function __html_es6_template_loader__() {
+      return `<li>${this.text} - ${this.created}</li>`;
+    }
+    module.exports = function(context) {
+      return __html_es6_template_loader__.call(context, context);
+    }
+  
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_message_model__ = __webpack_require__(0);
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_message_model__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_message_model___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__model_message_model__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__template_messages_html__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__template_messages_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__template_messages_html__);
 
 
-const m  = new __WEBPACK_IMPORTED_MODULE_0__model_message_model___default.a();
-console.log(m);
 
+document.getElementById('send').onclick = () => {
+    const newMessage = document.getElementById('message').value;
+    const m  = new __WEBPACK_IMPORTED_MODULE_0__model_message_model___default.a(newMessage);
+    document.getElementById('messages').innerHTML += __WEBPACK_IMPORTED_MODULE_1__template_messages_html___default()(m);
+}
 
+if (module && module.hot) {
+    module.hot.accept();
+}
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)(module)))
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map

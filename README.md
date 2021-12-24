@@ -13,6 +13,9 @@ Nele vamos explorar ainda:
 - Tree Shaking
 - Dead Code
 - Performance Tuning.
+- Dev Server
+- Hot Module replacement
+- Plugins Loaders
 
 ```
 Para o projeto foi criado os arquivos:
@@ -59,4 +62,10 @@ Serve with express Prod:
 
 ```bash
 yarn express:prod
+```
+
+Serve with Hot Module Replacemnt:
+
+```bash
+yarn hot
 ```
