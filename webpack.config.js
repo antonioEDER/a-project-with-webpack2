@@ -19,8 +19,21 @@ const config = {
       {
         loader:'html-es6-template-loader',
         test: /\.html$/,
+        exclude(filePath) {
+          return filePath === path.join(__dirname, 'app', 'index.html')
+        },
         query: {
           transpile: true
+        }
+      },
+      {
+        loader:'babel-loader',
+        test: /\.js$/,
+        exclude: '/node_modules/',
+        query: {
+          presets: [
+            'es2015'
+          ]
         }
       }
     ]

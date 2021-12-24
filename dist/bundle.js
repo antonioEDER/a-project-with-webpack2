@@ -68,38 +68,92 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-class Message {
-  constructor(text = '', created = Date.now()) {
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Message = function () {
+  function Message() {
+    var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var created = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Date.now();
+
+    _classCallCheck(this, Message);
+
     this.text = text;
     this.created = created;
   }
-  get created() {
-    return this._created;
-  }
-  set created(created) {
-    if (typeof created === 'undefined' || isNaN(created)) {
-      throw new Error('Invalid created');
-    }
-    if (Message.hasOwnProperty.call(this, '_created')) {
-      throw new Error('Created already defined');
-    }
-    this._created = created;
-  }
-  toString() {
-    const { created, text } = this;
-    return `Message created at: ${created} - Text: ${text}`;
-  }
-  static newEmptyMessage() {
-    return new Message();
-  }
-}
-module.exports = Message;
 
+  _createClass(Message, [{
+    key: 'toString',
+    value: function toString() {
+      var created = this.created,
+          text = this.text;
+
+      return 'Message created at: ' + created + ' - Text: ' + text;
+    }
+  }, {
+    key: 'created',
+    get: function get() {
+      return this._created;
+    },
+    set: function set(created) {
+      if (typeof created === 'undefined' || isNaN(created)) {
+        throw new Error('Invalid created');
+      }
+      if (Message.hasOwnProperty.call(this, '_created')) {
+        throw new Error('Created already defined');
+      }
+      this._created = created;
+    }
+  }], [{
+    key: 'newEmptyMessage',
+    value: function newEmptyMessage() {
+      return new Message();
+    }
+  }]);
+
+  return Message;
+}();
+
+module.exports = Message;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function () {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function get() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function get() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
 
@@ -112,58 +166,32 @@ module.exports = Message;
   
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if(!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true,
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_message_model__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_message_model___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__model_message_model__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__template_messages_html__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__template_messages_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__template_messages_html__);
+/* WEBPACK VAR INJECTION */(function(module) {
 
+var _message = __webpack_require__(0);
 
+var _message2 = _interopRequireDefault(_message);
 
-document.getElementById('send').onclick = () => {
-    const newMessage = document.getElementById('message').value;
-    const m  = new __WEBPACK_IMPORTED_MODULE_0__model_message_model___default.a(newMessage);
-    document.getElementById('messages').innerHTML += __WEBPACK_IMPORTED_MODULE_1__template_messages_html___default()(m);
-}
+var _messages = __webpack_require__(2);
+
+var _messages2 = _interopRequireDefault(_messages);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+document.getElementById('send').onclick = function () {
+    var newMessage = document.getElementById('message').value;
+    var m = new _message2.default(newMessage);
+    document.getElementById('messages').innerHTML += (0, _messages2.default)(m);
+};
 
 if (module && module.hot) {
     module.hot.accept();
 }
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ })
 /******/ ]);
