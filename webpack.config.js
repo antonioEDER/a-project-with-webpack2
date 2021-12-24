@@ -18,7 +18,10 @@ const config = {
     loaders: [
       {
         loader:'html-es6-template-loader',
-        test: /\.html$/
+        test: /\.html$/,
+        query: {
+          transpile: true
+        }
       }
     ]
   }

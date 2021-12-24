@@ -104,7 +104,7 @@ module.exports = Message;
 
 
     function __html_es6_template_loader__() {
-      return `<li>${this.text} - ${this.created}</li>`;
+      return "\n<h1>Brincando com webpack 2</h1>\n<li>" + this.text + " - " + this.created + "</li>\n";
     }
     module.exports = function(context) {
       return __html_es6_template_loader__.call(context, context);
@@ -167,4 +167,3 @@ if (module && module.hot) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.js.map
