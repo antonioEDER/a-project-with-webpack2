@@ -1,51 +1,58 @@
-const path = require("path");
-const webpack = require("webpack");
-const htmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  entry: "./app/index.js", // Arquivo de entrada
+  entry: './app/index.js', // Arquivo de entrada
   output: {
-    path: path.join(__dirname, "dist"), // Diretorio de saída
-    filename: "bundle.js", // Arquivo de saída
-    publicPath: "/", // Informa ao DevServe o diretorio do bundle
+    path: path.join(__dirname, 'dist'), // Diretorio de saída
+    filename: 'bundle.js', // Arquivo de saída
+    publicPath: '/', // Informa ao DevServe o diretorio do bundle
   },
   plugins: [
+    // eslint-disable-next-line new-cap
     new htmlWebpackPlugin({
-      template: path.join(__dirname, "app", "index.html"),
+      template: path.join(__dirname, 'app', 'index.html'),
     }),
   ],
   module: {
-    loaders: [
+    loaders: [ // ou rules
       {
-        loader:'html-es6-template-loader',
+        loader: 'html-es6-template-loader',
         test: /\.html$/,
         exclude(filePath) {
-          return filePath === path.join(__dirname, 'app', 'index.html')
+          return filePath === path.join(__dirname, 'app', 'index.html');
         },
         query: {
-          transpile: true
-        }
+          transpile: true,
+        },
       },
       {
-        loader:'babel-loader',
         test: /\.js$/,
-        exclude: '/node_modules/',
-        query: {
-          presets: [
-            'es2015'
-          ]
-        }
-      }
-    ]
-  }
+        loader: 'babel-loader',
+        options: {
+          presets: ['es2015'], // transpila para um JS mais recente
+        },
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(s[ca]ss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
+  },
 };
 
 // Valida se é desenvolvimento
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
   config.watch = true;
-  config.devtool = "source-map";
-} else if (process.env.NODE_ENV === "hot") {
-  config.devtool = "source-map";
+  config.devtool = 'source-map';
+} else if (process.env.NODE_ENV === 'hot') {
+  config.devtool = 'source-map';
   config.devServer = {
     hot: true, // recebe as atualizações sem recarregar a página
   };
