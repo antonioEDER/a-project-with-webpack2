@@ -13,7 +13,6 @@
     "express": "NODE_ENV=development PORT=8080 node server.js",
     "express:prod": "yarn build:prod && PORT=8081 node server.js",
     "hot": "NODE_ENV=hot webpack-dev-server"
-
   },
   "repository": {
     "type": "git",
@@ -50,8 +49,10 @@
     "nodemon": "^1.11.0",
     "sass-loader": "^5.0.1",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "file-loader": "^5.0.1",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
-    "webpack-dev-server": "^2.3.0"
+    "image-webpack-loader": "^6.0.0"
   }
 }
