@@ -3,10 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>Messages</title>
-</head>
+<link href="/main.fdcb1808.bundle.css" rel="stylesheet"></head>
 <body>
-  <input type="text" id="message">
-  <button id="send">Enviar</button>
-  <ul id="messages"></ul>
+  <header class="MessageBox">
+    <input class="MessageBox__text" type="text" id="message">
+    <button class="MessageBox__send" id="send">Enviar</button>
+  </header>
+  <section class="MessagesArea">
+    <ul id="messages" class="List"></ul>
+  </section>
 <script type="text/javascript" src="/bundle.js"></script></body>
 </html>

@@ -1,6 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+
+const extractSass = new ExtractTextWebpackPlugin({
+  filename: '[name].[contenthash:8].bundle.css',
+  disable: false,
+});
 
 const config = {
   entry: './app/index.js', // Arquivo de entrada
@@ -14,6 +20,7 @@ const config = {
     new htmlWebpackPlugin({
       template: path.join(__dirname, 'app', 'index.html'),
     }),
+    extractSass,
   ],
   module: {
     loaders: [ // ou rules
@@ -37,11 +44,13 @@ const config = {
       },
       {
         test: /\.(s[ca]ss)$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        loader: extractSass.extract({
+          loader: [
+            { loader: 'css-loader' },
+            { loader: 'sass-loader' },
+          ],
+          fallbackLoader: 'style-loader',
+        }),
       },
     ],
   },
