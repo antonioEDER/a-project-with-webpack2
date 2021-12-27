@@ -1,19 +1,21 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Messages</title>
-</head>
-<body>
-  <div>
-    <img src="" id="logo" alt="">
-  </div>
-  <header class="MessageBox">
-    <input class="MessageBox__text" type="text" id="message">
-    <button class="MessageBox__send" id="send">Enviar</button>
-  </header>
-  <section class="MessagesArea">
-    <ul id="messages" class="List"></ul>
-  </section>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Messages</title>
+  </head>
+  <body>
+    <header><img id="logo" src="" alt="" /></header>
+    <header class="MessageBox">
+      <div class="MessageBox__fields">
+        <input class="MessageBox__fields--text" type="text" id="message" />
+        <button class="MessageBox__fields--button" id="send">Enviar</button>
+      </div>
+      <a href="old-messages.html" class="MessageBox--link">Mensagens anteriores</a>
+    </header>
+    <br>
+    <section class="MessagesArea">
+      <ul id="messages" class="List"></ul>
+    </section>
+  </body>
 </html>

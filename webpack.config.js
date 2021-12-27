@@ -9,16 +9,33 @@ const extractSass = new ExtractTextWebpackPlugin({
 });
 
 const config = {
-  entry: './app/index.js', // Arquivo de entrada
+  entry: {
+    main: './app/index.js',
+    oldMessages: './app/old-messages.js',
+  }, // Arquivos de entrada
   output: {
     path: path.join(__dirname, 'dist'), // Diretorio de saída
-    filename: 'bundle.js', // Arquivo de saída
+    filename: '[name].[hash:8]bundle.js', // Arquivo de saída
     publicPath: '/', // Informa ao DevServe o diretorio do bundle
   },
   plugins: [
     // eslint-disable-next-line new-cap
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'commons.[hash:8].bundle.js',
+      minChunks: 2,
+    }),
+    // eslint-disable-next-line new-cap
     new htmlWebpackPlugin({
       template: path.join(__dirname, 'app', 'index.html'),
+      filename: 'index.html',
+      chunks: ['main', 'commons'],
+    }),
+    // eslint-disable-next-line new-cap
+    new htmlWebpackPlugin({
+      template: path.join(__dirname, 'app/template', 'old-messages.html'),
+      filename: 'old-messages.html',
+      chunks: ['oldMessages', 'commons'],
     }),
     extractSass,
   ],

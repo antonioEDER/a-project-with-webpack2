@@ -31,13 +31,13 @@ Para o projeto foi criado os arquivos:
 Build Development with yarn:
 
 ```bash
-yarn build
+yarn build:dev
 ```
 
 Build Prod with yarn:
 
 ```bash
-yarn build:prod
+yarn build
 ```
 
 Start with yarn:
@@ -68,4 +68,10 @@ Serve with Hot Module Replacemnt:
 
 ```bash
 yarn hot
+```
+
+Clean path /dist:
+
+```bash
+yarn clean
 ```

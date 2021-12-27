@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
+import moment from 'moment';
+
 import Message from './model/message.model';
 import template from './template/messages.html';
 
@@ -11,7 +14,10 @@ import logo from './images/webpack.png';
 document.getElementById('send').onclick = () => {
   const newMessage = document.getElementById('message').value;
   const m = new Message(newMessage);
-  document.getElementById('messages').innerHTML += template(m);
+  document.getElementById('messages').innerHTML += template({
+    m,
+    relativeTime: moment(m.created).fromNow(),
+  });
 };
 
 /* eslint no-undef: 0 */
