@@ -3,7 +3,7 @@ Configurando projeto com webpack 2
 
 
 ```
-Esse é um projeto foi desenvolvido com webpack 2.
+Esse é um projeto desenvolvido com webpack 2.
 
 Nele vamos explorar ainda:
 - Express
