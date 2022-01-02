@@ -2,11 +2,19 @@ const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 const extractSass = new ExtractTextWebpackPlugin({
   filename: '[name].[contenthash:8].bundle.css',
   disable: false,
 });
+
+const minify = {
+  collapseWhitespace: true,
+  conservativeCollapse: true,
+  removeComments: true,
+};
 
 const config = {
   entry: {
@@ -30,14 +38,20 @@ const config = {
       template: path.join(__dirname, 'app', 'index.html'),
       filename: 'index.html',
       chunks: ['main', 'commons'],
+      minify,
     }),
     // eslint-disable-next-line new-cap
     new htmlWebpackPlugin({
       template: path.join(__dirname, 'app/template', 'old-messages.html'),
       filename: 'old-messages.html',
       chunks: ['oldMessages', 'commons'],
+      minify,
     }),
     extractSass,
+    new UglifyJsWebpackPlugin(),
+    new CompressionWebpackPlugin({
+      asset: '[path].gz',
+    }),
   ],
   module: {
     loaders: [ // ou rules
@@ -55,7 +69,13 @@ const config = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {
-          presets: ['es2015'], // transpila para um JS mais recente
+          presets: [
+            [
+              'es2015', {
+                modules: false,
+              },
+            ],
+          ], // transpila para um JS mais recente
         },
         exclude: /node_modules/,
       },
