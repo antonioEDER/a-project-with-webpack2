@@ -1,5 +1,5 @@
-# configuring-project-with-webpack2
-Configurando projeto com webpack 2
+# a-project-with-webpack2
+Criando um projeto com webpack 2
 
 
 ```
